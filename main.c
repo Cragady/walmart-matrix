@@ -19,25 +19,6 @@
 #define COL_SPACER                 " "
 // clang-format on
 
-// char *matrix[CHAR_BUFF] = {
-//     "日", "二", "ﾊ", "ﾐ", "ﾋ", "ｰ", "ｳ", "ｼ", "ﾅ", "ﾓ",  "ﾆ", "ｻ",
-//     "ﾜ",  "ﾂ",  "ｵ", "ﾘ", "ｱ", "ﾎ", "ﾃ", "ﾏ", "ｹ", "ﾒ",  "ｴ", "ｶ",
-//     "ｷ",  "ﾑ",  "ﾕ", "ﾗ", "ｾ", "ﾈ", "ｽ", "ﾀ", "ﾇ", "ﾍ",  "ｦ", "ｲ",
-//     "ｸ",  "ｺ",  "ｿ", "ﾁ", "ﾄ", "ﾉ", "ﾌ", "ﾔ", "ﾖ", "ﾙ",  "ﾚ", "ﾛ",
-//     "ﾝ",  "0",  "1", "2", "3", "4", "5", "7", "8", "9",  ":", "・",
-//     ".",  "\"", "=", "*", "+", "-", "<", ">", "¦", "｜", "ç", "_"};
-
-char *matrix[CHAR_BUFF] = {
-    "ﾊ", "ﾐ", "ﾋ", "ｰ", "ｳ", "ｼ", "ﾅ", "ﾓ", "ﾆ", "ｻ", "ﾜ", "ﾂ", "ｵ", "ﾘ",
-    "ｱ", "ﾎ", "ﾃ", "ﾏ", "ｹ", "ﾒ", "ｴ", "ｶ", "ｷ", "ﾑ", "ﾕ", "ﾗ", "ｾ", "ﾈ",
-    "ｽ", "ﾀ", "ﾇ", "ﾍ", "ｦ", "ｲ", "ｸ", "ｺ", "ｿ", "ﾁ", "ﾄ", "ﾉ", "ﾌ", "ﾔ",
-    "ﾖ", "ﾙ", "ﾚ", "ﾛ", "ﾝ", "0", "1", "2", "3", "4", "5", "7", "8", "9",
-    ":", ".", "=", "*", "+", "-", "<", ">", "¦", "ç", "_"};
-
-int print_matrix[ROW_BUFF][COL_BUFF];
-int shuffle_y_pos[COL_BUFF];
-int reverse_scroll[COL_BUFF];
-
 int m_random(int min, int max);
 int matrix_random();
 void print_grid(bool scroll);
@@ -51,6 +32,18 @@ void swap(int *a, int *b);
 
 const int U_SECONDS = 62500;
 const int MODULO_LIMITER = 5;
+
+// const char *matrix_missing[5] = {"日", "二", "・", "\"", "｜"};
+const char *matrix[CHAR_BUFF] = {
+    "ﾊ", "ﾐ", "ﾋ", "ｰ", "ｳ", "ｼ", "ﾅ", "ﾓ", "ﾆ", "ｻ", "ﾜ", "ﾂ", "ｵ", "ﾘ",
+    "ｱ", "ﾎ", "ﾃ", "ﾏ", "ｹ", "ﾒ", "ｴ", "ｶ", "ｷ", "ﾑ", "ﾕ", "ﾗ", "ｾ", "ﾈ",
+    "ｽ", "ﾀ", "ﾇ", "ﾍ", "ｦ", "ｲ", "ｸ", "ｺ", "ｿ", "ﾁ", "ﾄ", "ﾉ", "ﾌ", "ﾔ",
+    "ﾖ", "ﾙ", "ﾚ", "ﾛ", "ﾝ", "0", "1", "2", "3", "4", "5", "7", "8", "9",
+    ":", ".", "=", "*", "+", "-", "<", ">", "¦", "ç", "_"};
+
+int print_matrix[ROW_BUFF][COL_BUFF];
+int shuffle_y_pos[COL_BUFF];
+// int reverse_scroll[COL_BUFF];
 
 int main() {
   srand(time(NULL));
@@ -140,7 +133,7 @@ void print_grid(bool scroll) {
     for (int j = 0; j < COL_BUFF; j++) {
       if (i == ROW_BUFF - 1 && scroll) {
         shuffle_y_pos[j] = m_random(0, 1);
-        reverse_scroll[j] = m_random(0, 1);
+        // reverse_scroll[j] = m_random(0, 1);
       }
       printf(COL_SPACER "%s" COL_SPACER, matrix[print_matrix[i][j]]);
     }
